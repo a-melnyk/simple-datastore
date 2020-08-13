@@ -40,7 +40,8 @@ class MainActivity : AppCompatActivity(), View, RemotePresentation.View {
 
     private fun bindButtons() {
         val buttonActions = mutableMapOf(
-            Pair(id.create_local, OnClickListener { localPresenter.createLocalItems() }),
+            Pair(id.create_post, OnClickListener { localPresenter.createPost() }),
+            Pair(id.create_post_with_comment, OnClickListener { localPresenter.createPostWithComment() }),
             Pair(id.update_local, OnClickListener { localPresenter.updateLocalItems() }),
             Pair(id.delete_local, OnClickListener { localPresenter.deleteLocalItems() }),
             Pair(id.query_local, OnClickListener { localPresenter.listLocalItems() }),

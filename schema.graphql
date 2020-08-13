@@ -8,4 +8,13 @@ type Post @model {
   title: String!
   rating: Int!
   status: PostStatus!
+  comments: [Comment] @connection(keyName: "byPost", fields: ["id"])
+}
+
+type Comment @model
+@key(name: "byPost", fields: ["postID", "content"]) {
+  id: ID!
+  postID: ID!
+  content: String!
+  post: Post @connection(fields: ["postID"])
 }

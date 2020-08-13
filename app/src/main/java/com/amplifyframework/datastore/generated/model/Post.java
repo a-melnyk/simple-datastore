@@ -1,5 +1,6 @@
 package com.amplifyframework.datastore.generated.model;
 
+import com.amplifyframework.core.model.annotations.HasMany;
 
 import java.util.List;
 import java.util.UUID;
@@ -27,6 +28,7 @@ public final class Post implements Model {
   private final @ModelField(targetType="String", isRequired = true) String title;
   private final @ModelField(targetType="Int", isRequired = true) Integer rating;
   private final @ModelField(targetType="PostStatus", isRequired = true) PostStatus status;
+  private final @ModelField(targetType="Comment") @HasMany(associatedWith = "post", type = Comment.class) List<Comment> comments = null;
   public String getId() {
       return id;
   }
@@ -41,6 +43,10 @@ public final class Post implements Model {
   
   public PostStatus getStatus() {
       return status;
+  }
+  
+  public List<Comment> getComments() {
+      return comments;
   }
   
   private Post(String id, String title, Integer rating, PostStatus status) {
@@ -80,9 +86,9 @@ public final class Post implements Model {
    public String toString() {
     return new StringBuilder()
       .append("Post {")
-      .append("id=" + String.valueOf(getId()))
-      .append("title=" + String.valueOf(getTitle()))
-      .append("rating=" + String.valueOf(getRating()))
+      .append("id=" + String.valueOf(getId()) + ", ")
+      .append("title=" + String.valueOf(getTitle()) + ", ")
+      .append("rating=" + String.valueOf(getRating()) + ", ")
       .append("status=" + String.valueOf(getStatus()))
       .append("}")
       .toString();

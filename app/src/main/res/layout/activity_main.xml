@@ -21,10 +21,10 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clear_local" />
+        app:layout_constraintTop_toBottomOf="@+id/create_post_with_comment" />
 
     <Button
-        android:id="@+id/create_local"
+        android:id="@+id/create_post"
         android:layout_width="150dp"
         android:layout_height="35dp"
         android:layout_marginTop="20dp"
@@ -51,7 +51,7 @@
         android:layout_marginEnd="20dp"
         android:text="@string/update_all_posts"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_local" />
+        app:layout_constraintTop_toBottomOf="@+id/create_post" />
 
     <Button
         android:id="@+id/delete_local"
@@ -102,5 +102,15 @@
         android:text="@string/clear_log"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/begin_subscription" />
+
+    <Button
+        android:id="@+id/create_post_with_comment"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Post + COMMENT"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clear_local" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

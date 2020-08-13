@@ -1,6 +1,7 @@
 package com.amplifyframework.datastore.sample
 
 import android.util.Pair
+import com.amplifyframework.datastore.generated.model.Comment
 
 import com.amplifyframework.datastore.generated.model.Post
 import com.amplifyframework.datastore.sample.LocalPresentation.PostInteractor
@@ -18,6 +19,12 @@ internal class LocalDataStoreInteractor(
     override fun createRandom(): Single<Post> {
         val post = Posts.random("Local")
         return dataStore.save(post).toSingleDefault(post)
+    }
+
+    override fun createRandomWithComment(): Pair<Single<Post>,Single<Comment>> {
+        val post = Posts.random("Local")
+        val comment = Comments.random("Comment", post)
+        return Pair(dataStore.save(post).toSingleDefault(post), dataStore.save(comment).toSingleDefault(comment))
     }
 
     override fun updateAll(posts: List<Post>): Single<List<Post>> {

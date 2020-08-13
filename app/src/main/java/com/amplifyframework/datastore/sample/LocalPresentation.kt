@@ -1,6 +1,7 @@
 package com.amplifyframework.datastore.sample
 
 import android.util.Pair
+import com.amplifyframework.datastore.generated.model.Comment
 
 import com.amplifyframework.datastore.generated.model.Post
 
@@ -16,7 +17,8 @@ internal interface LocalPresentation {
     }
 
     interface Presenter {
-        fun createLocalItems()
+        fun createPost()
+        fun createPostWithComment()
         fun updateLocalItems()
         fun listLocalItems()
         fun deleteLocalItems()
@@ -28,6 +30,7 @@ internal interface LocalPresentation {
 
     interface PostInteractor {
         fun createRandom(): Single<Post>
+        fun createRandomWithComment(): Pair<Single<Post>,Single<Comment>>
         fun updateAll(posts: List<Post>): Single<List<Post>>
         fun list(): Single<List<Post>>
         fun deleteAll(posts: List<Post>): Completable

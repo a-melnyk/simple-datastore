@@ -18,11 +18,18 @@ internal class LocalPresenter(
         private val resources: Resources) : Presenter {
     private val ongoingOperations: CompositeDisposable = CompositeDisposable()
 
-    override fun createLocalItems() {
+    override fun createPost() {
         ongoingOperations.clear()
         ongoingOperations.add(interactor.createRandom().subscribe(
             Consumer { view.displayLocalLogLine(LogLine.create(title(it), details(it))) }
         ))
+    }
+
+    override fun createPostWithComment() {
+        ongoingOperations.clear()
+        val pair = interactor.createRandomWithComment()
+        ongoingOperations.add(pair.first.subscribe(Consumer { view.displayLocalLogLine(LogLine.create(title(it), details(it))) }))
+        ongoingOperations.add(pair.second.subscribe(Consumer { view.displayLocalLogLine(LogLine.create(it.post.id, "${details(it.post)} ${it.content}")) }))
     }
 
     override fun updateLocalItems() {
